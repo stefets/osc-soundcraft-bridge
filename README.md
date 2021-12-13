@@ -14,15 +14,15 @@ It's a Python service possessed by multiple 😈😈😈
 * When an OSC message arrives, the OSC server calls the corresponding function of the SoundCraft client with the expected parameters.
 
 # Dependencies
-* liblo
-* pyliblo
+* apt-get install liblo-dev
+* pip install pyliblo
 
 # Example
 * Open the UI in a browser to see live change
 * Edit the config.json file according your setup
 * Start the service $python bridge.py
 * Use your favorite OSC client, in this example I will use yoggy/sendosc
-* ./sendosc 127.0.0.1 56419 /mix i 0 i 0.5
+* ./sendosc 127.0.0.1 56419 /mix i 0 f 0.5
 * ./sendosc 127.0.0.1 56419 /mute i 0 i 1
 * ./sendosc 127.0.0.1 56419 /mute i 0 i 0
 * Look at your browser to see the changes live
