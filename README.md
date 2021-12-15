@@ -28,7 +28,7 @@ It's a Python service possessed by multiple 😈😈😈
 * Look at your browser to see the changes live
 
 # Demonstration 🎥
-* TODO Control the SoundCraft from command line
+* Control the SoundCraft from command line https://www.youtube.com/watch?v=seUjRcMgsTw
 * TODO Control the SoundCraft with a MIDI keyboard 🎹
 
 # Motivation 🤔
