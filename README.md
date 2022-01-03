@@ -1,14 +1,14 @@
 # osc-soundcraft-bridge
 A bridge between the OSC protocol and the SoundCraft UI series.
 
-NOTICE : This is, and will be for a long time an experimental bridge, tested with a version 16. Yous should fork it to create your own logic. It's NOT a production service for you because of it's garbage in / garbage out passivity. 
+NOTICE : This is, and will be for a long time an experimental bridge, tested with a version 16. Yous should fork it to create your own logic. It's NOT a production service for you because of it's garbage in / garbage out passivity.
 
-Except for me, I use it in a production environment. 
+Except for me, I use it in a production environment. Why ? Because my OSC client don't send 💩🧻🚽 to the bridge.
 
-Why ? Because my OSC client don't send 💩🧻🚽 to the bridge.
+The Soundcraft web service crashed twice during all the tests, but the rest of the mixer functions has continue to works. I dont know if it's the bridge or the laggy Chromium browser of my Raspberry PI 4. 
 
 # Presentation
-It's a Python service possessed by multiple 😈😈😈
+It's a Python service possessed by few 😈😈
 * An OSC server.
 * A client connected to a SoundCraft UI server through a socket.
 * When an OSC message arrives, the OSC server calls the corresponding function of the SoundCraft client with the expected parameters.
@@ -28,8 +28,8 @@ It's a Python service possessed by multiple 😈😈😈
 * Look at your browser to see the changes live
 
 # Demonstration 🎥
-* TODO Control the SoundCraft from command line
-* TODO Control the SoundCraft with a MIDI keyboard 🎹
+* Control the SoundCraft from command line https://www.youtube.com/watch?v=seUjRcMgsTw
+* Control the SoundCraft with a MIDI keyboard 🎹 https://www.youtube.com/watch?v=IfXxfmwl2v0
 
 # Motivation 🤔
 When I play music and I want to change, for instance, the volume of an input I do it on a browser. On my PC or tablet in fact. Near everytime, my PC/tablet are in sleep mode, I have to 'awake' it, wait for the UI to come up and then I can change the volume.
