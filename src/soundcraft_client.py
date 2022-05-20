@@ -2,7 +2,6 @@ import time
 import threading
 import socket
 
-
 class SoundCraftClient(object):
     def __init__(self, version, ip, port):
         self.ip = ip
@@ -52,16 +51,38 @@ class SoundCraftClient(object):
         except:
             print("Oups")
 
-    def mix(self, channel, value):
-        cmd = f'SETD^i.{channel}.mix^{value}\n'.encode('UTF-8')
+    def mix(self, channel, value, kind='i'):
+        # Mix input by default or kind
+        cmd = f'SETD^{kind}.{channel}.mix^{value}\n'.encode('UTF-8')
         self.client.send(cmd)
-        #self.send_alive()
 
+    def imix(self, channel, value):
+        # Mix input
+        mix(channel,value)
 
-    def mute(self, channel, value):
-        cmd = f'SETD^i.{channel}.mute^{value}\n'.encode('UTF-8')
+    def pmix(self, channel, value):
+        # Mix player
+        mix(channel,value,'p')
+
+    def lmix(self, channel, value):
+        # Mix line
+        mix(channel,value,'l')
+
+    def mute(self, channel, value, kind='i'):
+        # Mute input by default or kind
+        cmd = f'SETD^{kind}.{channel}.mute^{value}\n'.encode('UTF-8')
         self.client.send(cmd)
-        #self.send_alive()    
+
+    def imute(self, channel, value):
+        # Mute input
+        mute(channel, value)
+
+    def pmute(self, channel, value):
+        # Mute player
+        self.mute(channel, value, 'p')
+
+    def lmute(self, channel, value):
+        self.mute(channel, value, 'l')
 
 
     def receive_thread(self):
