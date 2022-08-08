@@ -39,6 +39,7 @@ class SoundCraftClient(object):
         else:
             print("ERROR : Mixer not connected.")
 
+
     def terminate(self):
         if self.alive_thread.is_alive():
             self.alive_thread.join()
@@ -49,40 +50,21 @@ class SoundCraftClient(object):
             if self.connected:
                 print('Disconnected from SoundCraft gracefully.')
         except:
-            print("Oups")
+            print("Abnormal termination")
+
 
     def mix(self, channel, value, kind='i'):
         # Mix input by default or kind
+        # print(cmd)
         cmd = f'SETD^{kind}.{channel}.mix^{value}\n'.encode('UTF-8')
         self.client.send(cmd)
 
-    def imix(self, channel, value):
-        # Mix input
-        mix(channel,value)
-
-    def pmix(self, channel, value):
-        # Mix player
-        mix(channel,value,'p')
-
-    def lmix(self, channel, value):
-        # Mix line
-        mix(channel,value,'l')
 
     def mute(self, channel, value, kind='i'):
         # Mute input by default or kind
+        # print(cmd)
         cmd = f'SETD^{kind}.{channel}.mute^{value}\n'.encode('UTF-8')
         self.client.send(cmd)
-
-    def imute(self, channel, value):
-        # Mute input
-        mute(channel, value)
-
-    def pmute(self, channel, value):
-        # Mute player
-        self.mute(channel, value, 'p')
-
-    def lmute(self, channel, value):
-        self.mute(channel, value, 'l')
 
 
     def receive_thread(self):
