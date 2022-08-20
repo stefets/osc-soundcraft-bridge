@@ -53,6 +53,11 @@ class SoundCraftClient(object):
             print("Abnormal termination")
 
 
+    def master(self, value):
+        cmd = f'SETD^m.mix^{value}\n'.encode('UTF-8')
+        self.client.send(cmd)
+
+        
     def mix(self, channel, value, kind='i'):
         # Mix input by default or kind
         # print(cmd)

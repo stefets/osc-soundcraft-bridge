@@ -22,6 +22,11 @@ class OscServer(liblo.ServerThread):
     def pmix_callback(self, path, args):
         self.mixer.mix(args[0], args[1], "p")
 
+    
+    @liblo.make_method('/master', None)
+    def pmix_callback(self, path, args):
+        self.mixer.master(args[0])
+
 
     @liblo.make_method('/mute', None)
     def mute_callback(self, path, args):
