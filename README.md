@@ -5,8 +5,6 @@ NOTICE : This is, and will be for a long time an experimental bridge, tested wit
 
 Except for me, I use it in a production environment. Why ? Because my OSC client don't send 💩🧻🚽 to the bridge.
 
-The Soundcraft web service crashed twice during all the tests, but the rest of the mixer functions has continue to works. I dont know if it's the bridge or the laggy Chromium browser of my Raspberry PI 4. 
-
 # Presentation
 It's a Python service possessed by few 😈😈
 * An OSC server.
