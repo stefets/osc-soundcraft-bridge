@@ -9,7 +9,7 @@ import socket
 import colorama
 
 from services.osc import OscServer
-from services.soundcraft import SoundCraftClient
+from services.soundcraft import Mixer
 
 
 # Config file
@@ -32,7 +32,7 @@ def start_osc():
 def connect_mixer():
     global client
     config = configuration["soundcraft"]
-    client = SoundCraftClient(config["version"], config["ip"], config["port"])
+    client = Mixer(config["version"], config["ip"], config["port"])
     client.run_forever()
 
 

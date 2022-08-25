@@ -2,7 +2,7 @@ import time
 import threading
 import socket
 
-class SoundCraftClient(object):
+class Mixer(object):
     def __init__(self, version, ip, port):
         self.ip = ip
         self.port = port
