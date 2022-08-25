@@ -8,8 +8,8 @@ import signal
 import socket
 import colorama
 
-from osc_server import OscServer
-from soundcraft_client import SoundCraftClient
+from services.osc import OscServer
+from services.soundcraft import SoundCraftClient
 
 
 # Config file
