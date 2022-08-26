@@ -17,7 +17,7 @@ It's a Python service possessed by few 😈😈
 # Example
 * Open the UI in a browser to see live change
 * Edit the config.json file according your setup
-* Start the service $python bridge.py
+* Start the service $python app.py
 * Use your favorite OSC client, in this example I will use yoggy/sendosc
 * ./sendosc 127.0.0.1 56419 /mix i 0 f 0.5
 * ./sendosc 127.0.0.1 56419 /mute i 0 i 1
