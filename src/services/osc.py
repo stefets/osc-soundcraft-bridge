@@ -1,4 +1,3 @@
-
 import liblo
 
 class OscServer(liblo.ServerThread):
@@ -14,17 +13,17 @@ class OscServer(liblo.ServerThread):
 
     
     @liblo.make_method('/lmix', None)
-    def lmix_callback(self, path, args):
+    def line_in_mix_callback(self, path, args):
         self.mixer.mix(args[0], args[1], "l")
 
     
     @liblo.make_method('/pmix', None)
-    def pmix_callback(self, path, args):
+    def player_mix_callback(self, path, args):
         self.mixer.mix(args[0], args[1], "p")
 
     
     @liblo.make_method('/master', None)
-    def pmix_callback(self, path, args):
+    def master_mix_callback(self, path, args):
         self.mixer.master(args[0])
 
 
@@ -34,14 +33,15 @@ class OscServer(liblo.ServerThread):
 
 
     @liblo.make_method('/lmute', None)
-    def lmute_callback(self, path, args):
+    def line_in_mute_callback(self, path, args):
         self.mixer.mute(args[0], args[1], "l")
 
     
     @liblo.make_method('/pmute', None)
-    def pmute_callback(self, path, args):
+    def player_mute_callback(self, path, args):
         self.mixer.mute(args[0], args[1], "p")
 
+    
     def terminate(self):
         self.stop()
 

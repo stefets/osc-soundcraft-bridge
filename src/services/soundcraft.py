@@ -3,12 +3,13 @@ import threading
 import socket
 
 class Mixer(object):
-    def __init__(self, version, ip, port):
+    def __init__(self, version, ip, port, verbose=False):
         self.ip = ip
         self.port = port
         self.version = version
 
         self.connected = False
+        self.verbose = verbose
         
         self.exit_event = threading.Event()
 
@@ -55,21 +56,21 @@ class Mixer(object):
 
     def master(self, value):
         cmd = f'SETD^m.mix^{value}\n'.encode('UTF-8')
-        self.client.send(cmd)
-
+        self.send_packet(cmd)
         
+
     def mix(self, channel, value, kind='i'):
-        # Mix input by default or kind
-        # print(cmd)
-        cmd = f'SETD^{kind}.{channel}.mix^{value}\n'.encode('UTF-8')
-        self.client.send(cmd)
+        self.send_packet(f'SETD^{kind}.{channel}.mix^{value}\n'.encode('UTF-8'))
 
 
     def mute(self, channel, value, kind='i'):
-        # Mute input by default or kind
-        # print(cmd)
-        cmd = f'SETD^{kind}.{channel}.mute^{value}\n'.encode('UTF-8')
+        self.send_packet(f'SETD^{kind}.{channel}.mute^{value}\n'.encode('UTF-8'))
+
+
+    def send_packet(self, packet):
         self.client.send(cmd)
+        if self.verbose:
+            print(cmd)
 
 
     def receive_thread(self):
