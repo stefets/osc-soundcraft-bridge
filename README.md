@@ -1,15 +1,14 @@
 # osc-soundcraft-bridge
 A bridge between the OSC protocol and the SoundCraft UI series.
 
-NOTICE : This is, and will be for a long time an experimental bridge, tested with a version 16. Yous should fork it to create your own logic. It's NOT a production service for you because of it's garbage in / garbage out passivity.
-
-Except for me, I use it in a production environment. Why ? Because my OSC client don't send 💩🧻🚽 to the bridge.
-
 # Presentation
 It's a Python service possessed by few 😈😈
 * An OSC server.
 * A client connected to a SoundCraft UI server through a socket.
 * When an OSC message arrives, the OSC server calls the corresponding function of the SoundCraft client with the expected parameters.
+
+# Features to date
+* Mix and mute control for all channels, line in and player
 
 # Dependencies
 * apt-get install liblo-dev
