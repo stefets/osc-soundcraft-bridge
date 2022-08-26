@@ -41,6 +41,11 @@ class OscServer(liblo.ServerThread):
     def player_mute_callback(self, path, args):
         self.mixer.mute(args[0], args[1], "p")
 
+
+    @liblo.make_method('/fx', None)
+    def fx_callback(self, path, args):
+        self.mixer.fx(args[0], args[1])
+
     
     def terminate(self):
         self.stop()

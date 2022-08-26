@@ -66,11 +66,15 @@ class Mixer(object):
     def mute(self, channel, value, kind='i'):
         self.send_packet(f'SETD^{kind}.{channel}.mute^{value}\n'.encode('UTF-8'))
 
+    
+    def fx(self, channel, value, index=0):
+        self.send_packet(f'SETD^i.{channel}.fx.{index}.value^{value}\n'.encode('UTF-8'))
+
 
     def send_packet(self, packet):
-        self.client.send(cmd)
+        self.client.send(packet)
         if self.verbose:
-            print(cmd)
+            print(packet)
 
 
     def receive_thread(self):
