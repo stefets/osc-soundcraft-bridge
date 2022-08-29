@@ -41,10 +41,25 @@ class OscServer(liblo.ServerThread):
     def player_mute_callback(self, path, args):
         self.mixer.mute(args[0], args[1], "p")
 
+    
+    @liblo.make_method('/reverb', None)
+    def fx_mix_reverb_callback(self, path, args):
+        self.mixer.fx(args[0], args[1], 0)
 
-    @liblo.make_method('/fx', None)
-    def fx_callback(self, path, args):
-        self.mixer.fx(args[0], args[1])
+    
+    @liblo.make_method('/delay', None)
+    def fx_mix_delay_callback(self, path, args):
+        self.mixer.fx(args[0], args[1], 1)
+
+    
+    @liblo.make_method('/chorus', None)
+    def fx_mix_chorus_callback(self, path, args):
+        self.mixer.fx(args[0], args[1], 2)
+
+    
+    @liblo.make_method('/room', None)
+    def fx_mix_room_callback(self, path, args):
+        self.mixer.fx(args[0], args[1], 3)
 
     
     def terminate(self):
