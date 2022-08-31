@@ -7,6 +7,10 @@ It's a Python service possessed by few 😈😈
 * A client connected to a SoundCraft UI server through a socket.
 * When an OSC message arrives, the OSC server calls the corresponding function of the SoundCraft client with the expected parameters.
 
+
+<img src="/doc/osc-soundcraft-bridge.png" />
+
+
 # Features to date - Main Mix only
 * Mix, mute control for all channels, line in and player
 * Reverb, delay, chorus and room for all channel
