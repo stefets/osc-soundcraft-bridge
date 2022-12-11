@@ -62,6 +62,11 @@ class OscServer(liblo.ServerThread):
         self.mixer.fx(args[0], args[1], 3)
 
     
+    @liblo.make_method('/rectoggle', None)
+    def master_mix_record_callback(self, path, args):
+        self.mixer.record()
+
+
     def terminate(self):
         self.stop()
 
