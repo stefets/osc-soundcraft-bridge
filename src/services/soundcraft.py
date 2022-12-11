@@ -3,13 +3,13 @@ import threading
 import socket
 
 class Mixer(object):
-    def __init__(self, version, ip, port, verbose=False):
+    def __init__(self, version, ip, port, dry_run=False):
         self.ip = ip
         self.port = port
         self.version = version
 
         self.connected = False
-        self.verbose = verbose
+        self.dry_run = dry_run
         
         self.exit_event = threading.Event()
 
@@ -55,26 +55,28 @@ class Mixer(object):
 
 
     def master(self, value):
-        cmd = f'SETD^m.mix^{value}\n'.encode('UTF-8')
+        cmd = f'SETD^m.mix^{value}\n'
         self.send_packet(cmd)
         
 
     def mix(self, channel, value, kind='i'):
-        self.send_packet(f'SETD^{kind}.{channel}.mix^{value}\n'.encode('UTF-8'))
+        self.send_packet(f'SETD^{kind}.{channel}.mix^{value}\n')
 
 
     def mute(self, channel, value, kind='i'):
-        self.send_packet(f'SETD^{kind}.{channel}.mute^{value}\n'.encode('UTF-8'))
+        self.send_packet(f'SETD^{kind}.{channel}.mute^{value}\n')
 
     
     def fx(self, channel, value, index=0):
-        self.send_packet(f'SETD^i.{channel}.fx.{index}.value^{value}\n'.encode('UTF-8'))
+        self.send_packet(f'SETD^i.{channel}.fx.{index}.value^{value}\n')
+
+    
+    def record(self):
+        self.send_packet(f"RECTOGGLE\n")
 
 
-    def send_packet(self, packet):
-        self.client.send(packet)
-        if self.verbose:
-            print(packet)
+    def send_packet(self, command):
+        self.client.send(command.encode("UTF-8")) if not self.dry_run else print(command)
 
 
     def receive_thread(self):
