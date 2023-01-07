@@ -59,20 +59,30 @@ class Mixer(object):
         self.send_packet(cmd)
         
 
-    def mix(self, channel, value, kind='i'):
+    def mix(self, channel, value, kind):
         self.send_packet(f'SETD^{kind}.{channel}.mix^{value}\n')
 
 
-    def mute(self, channel, value, kind='i'):
+    def mute(self, channel, value, kind):
         self.send_packet(f'SETD^{kind}.{channel}.mute^{value}\n')
 
     
-    def fx(self, channel, value, index=0):
-        self.send_packet(f'SETD^i.{channel}.fx.{index}.value^{value}\n')
+    def fx(self, channel, value, kind, index):
+        '''
+            For index, 0:reverb, 1:delay, 2:chorus, 3:room
+        '''
+        self.send_packet(f'SETD^{kind}.{channel}.fx.{index}.value^{value}\n')
 
     
     def record(self):
         self.send_packet(f"RECTOGGLE\n")
+
+
+    def easy_eq(self, channel, value, kind, index):
+        '''
+            For index, 1:BASS, 2:MID, 3:TREBLE
+        '''
+        self.send_packet(f'SETD^{kind}.{channel}.eq.b{index}.gain^{value}\n')
 
 
     def send_packet(self, command):
