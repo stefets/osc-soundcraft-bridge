@@ -11,7 +11,7 @@ It's a Python service possessed by few 😈😈
 <img src="/doc/osc-soundcraft-bridge.png" />
 
 
-# Features to date - Main Mix only
+# Features to date
 * Mix and mute control for all channels, line in and player
 * Reverb, delay, chorus and room for all channels, line in and player
 * Easy EQ : BASS, MID, TREBLE for all channels, line in and player
