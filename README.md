@@ -12,8 +12,9 @@ It's a Python service possessed by few 😈😈
 
 
 # Features to date - Main Mix only
-* Mix, mute control for all channels, line in and player
-* Reverb, delay, chorus and room for all channel
+* Mix and mute control for all channels, line in and player
+* Reverb, delay, chorus and room for all channels, line in and player
+* Easy EQ : BASS, MID, TREBLE for all channels, line in and player
 * Master mix volume and master record (UI12/UI16, not tested on a UI24 because its multitrack)
 
 # Dependencies
