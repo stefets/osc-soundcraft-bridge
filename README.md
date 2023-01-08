@@ -34,7 +34,7 @@ It's a Python service possessed by few 😈😈
 # Demonstration 🎥
 * Part 1 : Control the SoundCraft from command line https://www.youtube.com/watch?v=seUjRcMgsTw
 * Part 2 : Control the SoundCraft with a MIDI keyboard 🎹 https://www.youtube.com/watch?v=IfXxfmwl2v0
-* Part 3 : In progress
+* Part 3 : In progress ( Demo with the Akai MIDI Mix and MPK 249 controllers )
 
 # Motivation 🤔
 When I play music and I want to change, for instance, the volume of an input I do it on a browser. On my PC or tablet in fact. Near everytime, my PC/tablet are in sleep mode, I have to 'awake' it, wait for the UI to come up and then I can change the volume.
