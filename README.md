@@ -1,5 +1,6 @@
 # osc-soundcraft-bridge
 A bridge between the OSC protocol and the SoundCraft UI series.
+
 I am disappointed of SoundCraft with the lack of updates/news for this series. It look like a 'product destinated to death' for unknown reason.
 
 # Presentation
