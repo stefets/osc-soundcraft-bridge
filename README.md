@@ -1,5 +1,6 @@
 # osc-soundcraft-bridge
 A bridge between the OSC protocol and the SoundCraft UI series.
+I am disappointed of SoundCraft with the lack of updates/news for this series. It look like a 'product destinated to death' for unknown reason.
 
 # Presentation
 It's a Python service possessed by few 😈😈
@@ -42,9 +43,7 @@ When I play music and I want to change, for instance, the volume of an input I d
 This little detail is a recursive PITA that makes me near crazy++ 😫
 
 # ENOUGH IS ENOUGH 😡
-The wait is over.
-
-I want to control my SoundCraft with OSC, and ANY programs and ANY MIDI instruments/controllers 🎹 at my fingertips. 
+The wait is over, I want to control my SoundCraft with OSC, and ANY programs and ANY MIDI instruments/controllers 🎹 at my fingertips. 
 
 RIGHT NOW ! 🥴
 
