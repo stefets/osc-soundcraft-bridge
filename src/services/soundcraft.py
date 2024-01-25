@@ -73,7 +73,14 @@ class Mixer(object):
         '''
         self.send_packet(f'SETD^{kind}.{channel}.fx.{index}.value^{value}\n')
 
-    
+
+    def fx_mute(self, input, value, datatype, fx_index):
+        '''
+            For index, 0:reverb, 1:delay, 2:chorus, 3:room
+        '''
+        self.send_packet(f'SETD^{datatype}.{input}.fx.{fx_index}.mute^{value}\n')
+
+
     def record(self):
         self.send_packet(f"RECTOGGLE\n")
 

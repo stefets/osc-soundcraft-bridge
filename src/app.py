@@ -6,7 +6,6 @@ import sys
 import json
 import signal
 import socket
-import colorama
 
 from services.osc import OscServer
 from services.soundcraft import Mixer
