@@ -72,7 +72,7 @@ class OscServer():
     def fx_mix_room_callback(self, path, *args):
         self.mixer.fx(args[0], args[1], args[2], 3)
         
-    def master_mix_record_callback(self, path, args):
+    def master_mix_record_callback(self, path, *args):
         self.mixer.record()
 
     def easy_eq_bass_callback(self, path, *args):
