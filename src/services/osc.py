@@ -1,9 +1,14 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+
 import liblo
+
 
 class OscServer(liblo.ServerThread):
     def __init__(self, listen_port, mixer):
         liblo.ServerThread.__init__(self, listen_port)
-
+        
         self.mixer = mixer
 
 
@@ -83,8 +88,11 @@ class OscServer(liblo.ServerThread):
 
 
     def terminate(self):
+        print("Stopping OSC Server")
         self.stop()
+        print("Server stopped")
 
 
     def run_forever(self):
+        print("Starting OSC Server")
         self.start()

@@ -4,8 +4,10 @@ A bridge between the OSC protocol and the SoundCraft UI series.
 I am disappointed of SoundCraft with the lack of updates/news for this series. It look like a 'product destinated to death' for unknown reason.
 
 # Presentation
-It's a Python service possessed by few 😈😈
-* An OSC server.
+## It's a Python service possessed by two 😈😈
+* An OSC server - the API support two OSC server defined in config.json
+  * python-osc (Recommended)
+  * pyliblo (Deprecated)
 * A client connected to a SoundCraft UI server through a socket.
 * When an OSC message arrives, the OSC server calls the corresponding function of the SoundCraft client with the expected parameters.
 
@@ -20,8 +22,11 @@ It's a Python service possessed by few 😈😈
 * Master mix volume and master record (UI12/UI16, not tested on a UI24 because its multitrack)
 
 # Dependencies
-* apt-get install liblo-dev
-* pip install pyliblo
+* Recommended
+  * pip install python-osc (Recommended)
+* Deprecated
+  * apt-get install liblo-dev
+  * pip install pyliblo
 
 # Example
 * Open the UI in a browser to see live change
