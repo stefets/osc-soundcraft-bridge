@@ -38,11 +38,6 @@ I am disappointed of SoundCraft with the lack of updates/news for this series. I
 * ./sendosc 127.0.0.1 56419 /mute i 0 i 0
 * Look at your browser to see the changes live
 
-# Demonstration 🎥
-* Part 1 : Control the SoundCraft from command line https://www.youtube.com/watch?v=seUjRcMgsTw
-* Part 2 : Control the SoundCraft with a MIDI keyboard 🎹 https://www.youtube.com/watch?v=IfXxfmwl2v0
-* Part 3 : In progress ( Demo with the Akai MIDI Mix and MPK 249 controllers )
-
 # Motivation 🤔
 When I play music and I want to change, for instance, the volume of an input I do it on a browser. On my PC or tablet in fact. Near everytime, my PC/tablet are in sleep mode, I have to 'awake' it, wait for the UI to come up and then I can change the volume.
 

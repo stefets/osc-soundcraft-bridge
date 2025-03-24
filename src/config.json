@@ -6,8 +6,16 @@
     },
     "soundcraft": {
         "version" : 16,
-        "ip": "192.168.1.161",
+        "ip": "soundcraft.pacificweb.ca",
         "port": 80,
         "versions" : [12, 16]
-    }
+    },
+    "clients" : [
+        {
+            "name" : "mididings"
+        },
+        {
+            "name" : "sendosc"
+        }
+    ]
 }
