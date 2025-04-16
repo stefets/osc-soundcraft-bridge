@@ -92,6 +92,13 @@ class Mixer(object):
         self.send_packet(f'SETD^{kind}.{channel}.eq.b{index}.gain^{value}\n')
 
 
+    def aux_send(self, channel, value, aux_index):
+        '''
+            For aux_index, 0:aux1, 1:aux2, 2:aux3, 3:aux4, 4:aux5
+        '''
+        self.send_packet(f'SETD^i.{channel}.aux.{aux_index}.value^{value}\n')
+
+
     def send_packet(self, command):
         self.client.send(command.encode("UTF-8")) if not self.dry_run else print(command)
 
