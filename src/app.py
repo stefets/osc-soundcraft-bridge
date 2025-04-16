@@ -11,6 +11,7 @@ import threading
 
 from services.soundcraft import Mixer
 from services.py_osc import OscServer
+from exceptions import GracefulExit
 
 
 # Config file
@@ -23,9 +24,10 @@ osc_server = None
 client = None
 
 
-def start_osc_server(ip, port):
+def run_osc_server():
     global osc_server
-    osc_server = OscServer(ip, port, client)
+    osc = configuration["osc"]
+    osc_server = OscServer(osc["ip"], osc["listen_port"], client)
     # Run the server in a separate thread
     osc_server_thread = threading.Thread(target=osc_server_thread_target, args=(osc_server,))
     osc_server_thread.start()      
@@ -36,7 +38,7 @@ def osc_server_thread_target(osc_server):
     osc_server.run_forever()
 
 
-def connect_mixer():
+def connect_to_mixer():
     global client
     config = configuration["soundcraft"]
     client = Mixer(config["version"], config["ip"], config["port"])
@@ -44,36 +46,39 @@ def connect_mixer():
 
 
 def signal_handler(signum, frame):
-    print(f"Signal {signum} received.")
-    dispose()
+    raise GracefulExit(f"Received signal {signum}")
 
 
 def dispose():
     global client
+    global osc_server
+
+    print("Cleaning up...")
+    
     if client:
         client.exit_event.set()
         client.terminate()
-
-    global osc_server
+    
     if osc_server:
         osc_server.terminate()
+
+    print("All services disposed.")
 
 
 def main(args=None):
     signal.signal(signal.SIGINT, signal_handler)
     try:
-        connect_mixer()
-        osc = configuration["osc"]
-        start_osc_server(osc["ip"], osc["listen_port"])
+        connect_to_mixer()
+        run_osc_server()
         signal.pause()
-    except socket.timeout:
-        print("SoundCratf disconnected.")
-        dispose()
+    except socket.timeout as st:
+        print("socket timeout: Soundcraft server connection lost - stopping service.")
+    except GracefulExit as ge:
+        print(f"Graceful exit: {ge}")        
     except Exception as ex:
-        print(ex)
-        dispose()
+        print(f"Fatal error: {ex}")
     finally:
-        print("All services disposed.")
+        dispose()
 
 
 if __name__ == '__main__':
