@@ -7,10 +7,10 @@ import sys
 import json
 import signal
 import socket
-import warnings
 import threading
 
 from services.soundcraft import Mixer
+from services.py_osc import OscServer
 
 
 # Config file
@@ -18,43 +18,22 @@ sys.path.append(os.path.realpath('.'))
 with open('config.json') as json_file:
     configuration = json.load(json_file)
     
-backends = ["python-osc", "pyliblo"]
 
 osc_server = None
 client = None
 
 
-def start_osc_server(backend, ip, port):
-    if backend == "pyliblo":
-        use_pyliblo(port)
-    elif backend == "python-osc":
-        use_python_osc(ip, port)
-    else:
-        raise Exception(f"Unsupported backend: [{backend}]")
-
-
-def use_pyliblo(port):
+def start_osc_server(ip, port):
     global osc_server
-    warnings.warn(
-        "Warning: pyliblo support will not evolve further. Consider using python-osc for future compatibility.",
-        DeprecationWarning, 2)
-    from services.osc import OscServer
-    osc_server = OscServer(port, client)
-    osc_server.run_forever()
-
-
-def use_python_osc(ip, port):
-    global osc_server
-    from services.py_osc import OscServer
     osc_server = OscServer(ip, port, client)
     # Run the server in a separate thread
-    server_thread = threading.Thread(target=run_server, args=(osc_server,))
-    server_thread.start()      
+    osc_server_thread = threading.Thread(target=osc_server_thread_target, args=(osc_server,))
+    osc_server_thread.start()      
 
 
-def run_server(server):
+def osc_server_thread_target(osc_server):
     """Function to run the OSC server in a separate thread."""
-    server.run_forever()
+    osc_server.run_forever()
 
 
 def connect_mixer():
@@ -85,7 +64,7 @@ def main(args=None):
     try:
         connect_mixer()
         osc = configuration["osc"]
-        start_osc_server(osc["backend"], osc["ip"], osc["listen_port"])
+        start_osc_server(osc["ip"], osc["listen_port"])
         signal.pause()
     except socket.timeout:
         print("SoundCratf disconnected.")

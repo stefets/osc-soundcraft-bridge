@@ -1,8 +1,7 @@
 {
     "osc": {
         "listen_port": 56420,
-        "ip": "127.0.0.1",
-        "backend": "python-osc"
+        "ip": "127.0.0.1"
     },
     "soundcraft": {
         "version" : 16,
