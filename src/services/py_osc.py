@@ -35,6 +35,9 @@ class OscServer():
         self.dispatcher.map("/bass", self.easy_eq_bass_callback)
         self.dispatcher.map("/mid", self.easy_eq_mid_callback)
         self.dispatcher.map("/treble", self.easy_eq_treble_callback)
+
+        self.dispatcher.map("/auxsend", self.auxsend_callback)
+
                 
     def default_handler(self, path, *args):
         print(("DEFAULT " + path + ":" + "{}".format(args)))
@@ -83,7 +86,10 @@ class OscServer():
 
     def easy_eq_treble_callback(self, path, *args):
         self.mixer.easy_eq(args[0], args[1], args[2], 3)
-
+    
+    def auxsend_callback(self, path, *args):
+        self.mixer.aux_send(args[0], args[1], args[2])
+    
     def terminate(self):
         print("Stopping OSC Server")
         self.server.shutdown()
