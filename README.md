@@ -4,8 +4,8 @@ A bridge between the OSC protocol and the SoundCraft UI series.
 - **Tested on an UI16**
 
 ### A Python API possessed by two daemons
-* 😈 An OSC server exposing paths and expecting precise args.
-* 😈 A client socket connected to your SoundCraft UI server.
+* An OSC server exposing paths and expecting precise args.
+* A client socket connected to your SoundCraft UI server.
 
 ### Supported UI features (Tested on UI16)
 * Master Mix
